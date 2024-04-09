@@ -1,0 +1,69 @@
+﻿@model WebApplication2.Models.Domain.TblAlbum
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<main role="main" class="pb-3">
+    <div class="container">
+
+        <div>
+            <br />
+        </div>
+
+        <h1 style="text-align: center;">ALBÜM BİLGİLERİNİ DÜZENLE</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Album_Id" />
+                    <div class="form-group">
+                        <label asp-for="Album_No" class="control-label">Albüm No</label>
+                        <input asp-for="Album_No" class="form-control" />
+                        <span asp-validation-for="Album_No" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Album_Tur" class="control-label">Albüm Türü</label>
+                        <input asp-for="Album_Tur" class="form-control" />
+                        <span asp-validation-for="Album_Tur" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Sanatci_Bilgi" class="control-label">Sanatçı Bilgisi</label>
+                        <input asp-for="Sanatci_Bilgi" class="form-control" />
+                        <span asp-validation-for="Sanatci_Bilgi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Album_Ad" class="control-label">Albüm Adı</label>
+                        <input asp-for="Album_Ad" class="form-control" />
+                        <span asp-validation-for="Album_Ad" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Album_Fiyat" class="control-label">Albüm Fiyatı</label>
+                        <input asp-for="Album_Fiyat" class="form-control" type="number" step="0.01"/>
+                        <span asp-validation-for="Album_Fiyat" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" style="background-color: #F1A4B3;" asp-for="Yerli" />Yerli mi?
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Menajer_Bilgi" class="control-label">Menajer Bilgisi</label>
+                        <input asp-for="Menajer_Bilgi" class="form-control" />
+                        <span asp-validation-for="Menajer_Bilgi" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <br />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-secondary btn-sm">Listeye geri dön</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

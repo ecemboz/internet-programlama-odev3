@@ -1,0 +1,93 @@
+﻿@model IEnumerable<WebApplication2.Models.Domain.TblAlbum>
+
+@{
+    ViewData["Title"] = "Albüm Listesi";
+}
+
+<style>
+    table {
+        width: 100%;
+        background-color: #DBB3B3;
+    }
+
+    th {
+        border: 1px solid #212529;
+        text-align: center;
+        padding: 8px;
+    }
+
+    td {
+        border: 1px solid #212529;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr.hey:nth-child(odd) {
+        background-color: #F7CACA;
+    }
+
+    tr.hey:nth-child(even) {
+        background-color: #EFD8DB;
+    }
+
+</style>
+
+<main role="main" class="pb-3">
+    <div class="container">
+        <div>
+            <br />
+        </div>
+        <h1 style="text-align: center;">ALBÜM LİSTESİ</h1>
+
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Yeni Kayıt Oluştur</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Albüm No</th>
+                    <th>Albüm Türü</th>
+                    <th>Sanatçı Bilgisi</th>
+                    <th>Albüm Adı</th>
+                    <th>Albüm Fiyatı</th>
+                    <th>Yerli mi?</th>
+                    <th>Menajer Bilgisi</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="hey">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Album_No)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Album_Tur)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sanatci_Bilgi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Album_Ad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Album_Fiyat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Yerli)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Menajer_Bilgi)
+                        </td>
+                        <td style="text-align: center;">
+                            <a asp-action="Edit" asp-route-id="@item.Album_Id" class="btn btn-primary btn-sm">Düzenle</a> |
+                            <a asp-action="Details" asp-route-id="@item.Album_Id" class="btn btn-primary btn-sm">Detaylar</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Album_Id" class="btn btn-primary btn-sm">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>
